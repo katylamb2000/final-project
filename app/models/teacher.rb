@@ -1,6 +1,4 @@
 class Teacher < ApplicationRecord
-    has_many :teacher_camps
-    has_many :camps, through: :teacher_camps
-    has_many :lessons
-    has_many :students, through: :lessons
+    has_secure_password
+    has_one_attached :avatar
 end
