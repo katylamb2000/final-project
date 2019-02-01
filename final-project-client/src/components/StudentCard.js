@@ -7,11 +7,10 @@ class StudentCard extends React.Component {
     return (
       <div className="item" style={{ margin: "2em" }}>
         <div className="ui three column centered grid">
-          <h1>{this.props.student.name}</h1>
-          <img src={this.props.student.photo} />
-          <p>{this.props.student.age}</p>
+          <h1>{this.props.student.username}</h1>
+          
           <Button
-            onClick={() => this.props.selectStudent(this.props.student)}
+            onClick={() => this.props.viewStudent(this.props.student)}
             className="App-button"
           >
             {" "}

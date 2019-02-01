@@ -25,7 +25,7 @@ end
         # , photo: "https://www.danburyhospital.org/-/media/wchn/shared/find-a-doc/0/0-placeholderuser.png?la=en&h=200&w=200&mw=200&hash=3A5B944E8ABE2FE4951ADA8A53064D67D58DC688")
        
         if student
-                    render json: {username: student.username, token: issue_token({id: student.id}), id: student.id }
+                    render json: {username: student.username, token: issue_token({id: student.id}), id: student.id,  }
             # , photo: "https://www.danburyhospital.org/-/media/wchn/shared/find-a-doc/0/0-placeholderuser.png?la=en&h=200&w=200&mw=200&hash=3A5B944E8ABE2FE4951ADA8A53064D67D58DC688"}
         else
             render json: {error: "User not found"}
@@ -43,26 +43,26 @@ end
         students = []
         Student.all.each do |student| 
           
-            students << { name: student.name, id: student.id, photo: student.photo, bio: student.bio, camp: student.camps }
+            students << { username: student.username, id: student.id}
         end
         render json: students
     end
 
 
-    def profile_picture(student_id)
-        student = Student.find!(student_id)
-        if teacher.avatar.attached?
-            image_tag teacher.avatar
-        else
-            image_tag 'default_avatar.jpg'
-        end
-    end
+    # def profile_picture(student_id)
+    #     student = Student.find!(student_id)
+    #     if student.avatar.attached?
+    #         image_tag student.avatar
+    #     else
+    #         image_tag 'default_avatar.jpg'
+    #     end
+    # end
 
          def update_profile_picture
         student = get_current_student
-        student.update(profile_picture: params[:image])
+        student.update(image: params[:image])
 
-        render json: {profile_picture: student.profile_picture}
+        render json: {username: student.username, token: issue_token({id: student.id}), image: student.image}
     end
     # def get_student
     #     student = get_current_student

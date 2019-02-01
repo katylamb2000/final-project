@@ -1,7 +1,7 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import Calendar from "./Calendar";
+import { Card, Button } from 'semantic-ui-react'
 
 class TeacherProfile extends React.Component {
   state = {
@@ -14,18 +14,21 @@ class TeacherProfile extends React.Component {
   //   }
   render() {
     return (
-      <div className="ui grid" style={{ margin: "2em" }}>
-        <h1>{this.props.teacher.name}</h1>
-        <img src={this.props.teacher.photo} />
-        <p>{this.props.teacher.nationality}</p>
-        <p>{this.props.teacher.bio}</p>
-        <Button
-          onClick={() => this.props.showTeacherResume(this.props.teacher)}
-          className="App-button"
-        >
-          More
-        </Button>
-      </div>
+      <Card
+
+      onClick={() => this.props.showTeacherPage(this.props.teacher)}
+      image='http://s3-eu-west-1.amazonaws.com/wbm.thumbnail/dissolve/1014432_600.jpg'
+      header={this.props.teacher.username}
+      description="Teacher bio will go here"
+      meta="nationality"
+      extra="badges"
+      
+      >
+      
+
+       
+     
+      </Card>
     );
   }
 }

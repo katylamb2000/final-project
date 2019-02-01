@@ -20,16 +20,17 @@ class ChangeProfilePicForm extends React.Component {
     console.log(this.state.image);
   };
 
-  UploadProfilePicture = e => {
+  UploadProfilePicture = () => {
     const { image } = this.state;
     API.ChangeProfilePicture(image).then(data => {
       if (data.error) {
         alert("Picture upload failed");
       } else {
         console.log(image, "should be working now.");
+        this.props.changePic(data)
         // this.props.selectCV(data);
         // this.props.saveNewTeacher(data);
-        // this.props.closePicForm();
+        this.props.close();
       }
     });
   };

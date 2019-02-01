@@ -17,6 +17,7 @@ import NewTeacherForm from "./components/NewTeacherForm";
 import Resume from "./components/Resume";
 import Home from "./components/Home";
 import StudentProfile from "./components/StudentProfile";
+import ViewStudent from "./components/ViewStudent";
 
 import UploadProfilePictureForm from "./components/UploadProfilePictureForm";
 
@@ -31,14 +32,15 @@ class App extends Component {
     selectedTeacher: null,
     goToOwnProfile: null,
     selectedCamp: null,
-    user: null,
     campTeachers: null,
     NewCampForm: false,
     NewTeacherForm: false,
-    NewTeacher: [],
+    NewTeacher: null,
     UploadProfilePictureForm: false,
     avatar: null,
-    newProfilePicture: false
+    newProfilePicture: false,
+    pic: null,
+    viewStudent: null
   };
 
   componentDidMount() {
@@ -94,7 +96,13 @@ class App extends Component {
     this.setState({ changeProfilePicture: true });
   };
 
-  viewTeacher = teacher => {
+  changePic = (data) => {
+    this.setState({
+      user: data
+    })
+  }
+
+  showTeacherPage = teacher => {
     this.setState({ selectedTeacher: teacher });
     this.props.history.push("/selectedteacher/");
   };
@@ -117,9 +125,15 @@ class App extends Component {
     this.props.history.push("/selectedstudent/");
   };
 
+  viewStudent = student => {
+    // console.log(event);
+    this.setState({ viewStudent: student });
+    this.props.history.push("/viewstudent/");
+  };
+
   showTeacherResume = teacher => {
     // console.log(event);
-    this.setState({ selectedTeacher: teacher });
+    this.setState({ TeacherUser: teacher });
     this.props.history.push("/selectedteacher/");
   };
 
@@ -139,12 +153,6 @@ class App extends Component {
     this.state.allTeachers.push(data);
   };
 
-  showTeacher = teacher => {
-    this.setState({ showTeacher: teacher });
-
-    this.props.history.push("/teacher");
-    this.close();
-  };
 
   campTeachersMethod = () => {
     const id = this.state.selectedCamp.id;
@@ -190,6 +198,8 @@ class App extends Component {
                 user={this.state.user}
                 changeProfilePicture={this.changeProfilePicture}
                 newProfilePicture={this.state.newProfilePicture}
+                changePic={this.changePic}
+                pic={this.state.pic}
               />
             );
           }}
@@ -237,12 +247,18 @@ class App extends Component {
             <StudentProfile {...props} student={this.state.selectedStudent} />
           )}
         />
+         <Route
+          path="/viewstudent/"
+          render={props => (
+            <ViewStudent {...props} student={this.state.viewStudent} />
+          )}
+        />
         <Route
           path="/students"
           exact
           strict
           render={() => (
-            <StudentsContainer selectStudent={this.selectStudent} />
+            <StudentsContainer selectStudent={this.selectStudent} viewStudent={this.viewStudent} />
           )}
         />
         <Route
@@ -266,7 +282,8 @@ class App extends Component {
           render={() => (
             <TeachersContainer
               allTeachers={this.state.allTeachers}
-              showTeacherResume={this.showTeacherResume}
+              // showTeacherResume={this.showTeacherResume}
+               showTeacherPage={this.showTeacherPage}
               // selectCamp={this.selectCamp}
               // allTeachers={this.state.allTeachers}
               // getCampTeachers={this.getCampTeachers}
@@ -281,10 +298,7 @@ class App extends Component {
           render={() => (
             <Resume
               teacher={this.state.showTeacher}
-              RenderUploadProfilePictureForm={
-                this.RenderUploadProfilePictureForm
-              }
-              avatar={this.state.avatar}
+             
             />
           )}
         />

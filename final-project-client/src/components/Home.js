@@ -6,6 +6,7 @@ import ProfilePicture from "./ProfilePicture";
 import CampsContainer from "./CampsContainer";
 import CoverPhoto from "./CoverPhoto";
 import ChangeProfilePicForm from "./ChangeProfilePicForm";
+import StudentProfile from "./StudentProfile"
 
 class Home extends React.Component {
   state = {
@@ -27,11 +28,15 @@ class Home extends React.Component {
         <ProfilePicture
           changeProfilePicture={this.changeProfilePicture}
           user={this.props.user}
-          closeProfilePictureForm={this.closeProfilePictureForm}
+          close={this.closeProfilePictureForm}
           className="image2"
+          pic={this.props.pic}
         />
-        {this.state.changeProfilePicture ? <ChangeProfilePicForm /> : null}
+        {this.state.changeProfilePicture ? <ChangeProfilePicForm changePic={this.props.changePic} user={this.props.user}
+          close={this.closeProfilePictureForm}/> : null}
+         <StudentProfile student={this.props.user}/> 
       </div>
+
     );
   }
 }

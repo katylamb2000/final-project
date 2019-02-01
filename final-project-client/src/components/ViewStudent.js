@@ -5,7 +5,7 @@ import Calendar from "./Calendar";
 import { Container, Button, Form, TextArea } from 'semantic-ui-react'
 
 
-class StudentProfile extends React.Component {
+class ViewStudent extends React.Component {
 
   state = {
     status: ""
@@ -20,12 +20,9 @@ class StudentProfile extends React.Component {
       <Container> 
       <div class="ui raised segment" text>
        
-          <h1>Hi {this.props.student.username} what did you do today? </h1>
+          <h1> {this.props.student.username}  </h1>
         
-<Form>
-<Form.Field control={TextArea} label='My Day' placeholder='Today I...' />
-<Form.Button>Send</Form.Button>
-</Form>
+
 
         
       </div>
@@ -36,4 +33,4 @@ class StudentProfile extends React.Component {
   }
 }
 
-export default StudentProfile;
+export default ViewStudent;

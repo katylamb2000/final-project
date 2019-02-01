@@ -84,13 +84,13 @@ end
 #         params.require(:teacher).permit(:avatar)
 #       end
 
-    #   def get_all_teachers
-    #     teachers = []
-    #     Teacher.all.each do |teacher| 
+      def get_all_teachers
+        teachers = []
+        Teacher.all.each do |teacher| 
           
-    #         teachers << { name: teacher.name, id: teacher.id, nationality: teacher.nationality, photo: teacher.photo, bio: teacher.bio, camp: teacher.camps }
-    #     end
-    #     render json: teachers
-    # end
+            teachers << { username: teacher.username, id: teacher.id }
+        end
+        render json: teachers
+    end
 end
 

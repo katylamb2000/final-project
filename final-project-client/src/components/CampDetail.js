@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import Gallery from './Gallery'
 
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -13,9 +14,11 @@ class CampDetail extends React.Component {
   render() {
     return (
       <Fragment>
-        <div className="ui grid" style={{ margin: "2em" }}>
+        
+        {/* <div className="ui grid" style={{ margin: "2em" }}> */}
           <div className="ui three wide column">
             <h1>{this.props.camp.title}</h1>
+            <Gallery />
             <img alt={this.props.camp.location} src={this.props.camp.photo} />
             <p>{this.props.camp.location}</p>
             <h5>Teachers</h5>
@@ -58,8 +61,10 @@ class CampDetail extends React.Component {
               Back
             </Button>
           </div>
-        </div>
+        {/* </div> */}
+        
       </Fragment>
+      
     );
   }
 }

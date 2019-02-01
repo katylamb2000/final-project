@@ -105,14 +105,10 @@ ActiveRecord::Schema.define(version: 2018_12_13_141407) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.string "photo"
-    t.string "bio"
   end
 
   create_table "teacher_camps", force: :cascade do |t|

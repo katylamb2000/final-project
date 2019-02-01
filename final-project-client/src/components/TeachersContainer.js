@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Segment, Input } from 'semantic-ui-react'
 import TeacherProfile from "./TeacherProfile";
 import API from "../API";
 
@@ -14,15 +14,23 @@ class TeachersContainer extends React.Component {
   render() {
     return (
       <div className="ui four column grid" style={{ margin: "2em" }}>
-        <h1>Teachers</h1>
+      <Segment raised attached='top'>
+        <h1 attached="left">Teachers</h1>
+        <Input placeholder='Search teachers...' attached="right" />
+
+        </Segment>
         {this.state.allTeachers.map(teacher => (
+
+          
           <TeacherProfile
             teacher={teacher}
-            showTeacherResume={this.props.showTeacherResume}
+            showTeacherPage={this.props.showTeacherPage}
+            // showTeacherResume={this.props.showTeacherResume}
           />
         ))}
       </div>
     );
   }
+
 }
 export default TeachersContainer;

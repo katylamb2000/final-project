@@ -16,7 +16,7 @@ class NewCampForm extends React.Component {
   render() {
     return (
       <div style={{ margin: "2em" }}>
-        {/* <h5  x onClick={this.props.closeCampsForm}>x</h5> */}
+         <h5 onClick={this.props.closeCampsForm}>x</h5> 
         <i class="close" onClick={this.props.closeCampsForm}>
           {" "}
         </i>

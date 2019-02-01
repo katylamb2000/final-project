@@ -5,7 +5,8 @@ class Student < ApplicationRecord
     has_many :teachers, through: :Lessons
     has_many :student_camps 
     has_many :camps, through: :student_camps
-    has_one_attached :profile_picture
+    has_one_attached :image
+    has_many :gallerys
  
    
 

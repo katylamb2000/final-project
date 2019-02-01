@@ -29,15 +29,19 @@ class Resume extends React.Component {
     return (
       <div className="ui three column centered grid">
         <h1>
-          Hi my name is {this.props.teacher.username}
+          Congratulations on joining Karstaway, {this.props.teacher.username}
         </h1>
         {this.props.teacher.avatar ? (
           <img src={this.props.teacher.teacherAvatar} />
         ) : null}
 
-        
-       
-         
+        <p> Lets start building your profile!</p>
+
+        <Button onClick={this.handleAddPicClick} className="App-button">
+          {" "}
+          Add profile picture
+        </Button>
+        {/*  
         <p>{this.props.teacher.nationality}</p>
         <Button onClick={this.viewCalender} className="App-button">
           {" "}
@@ -48,7 +52,7 @@ class Resume extends React.Component {
           {" "}
           Enter the classroom
         </Button>
-        {this.state.enterTheClassroom ? <VideoComponent /> : null} 
+        {this.state.enterTheClassroom ? <VideoComponent /> : null} */}
       </div>
     );
   }
